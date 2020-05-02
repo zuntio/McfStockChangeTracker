@@ -20,14 +20,13 @@ This application is provided "as is". If you download binaries or compile this b
 
 Tracker will be updated to use Dependecy Injection. Also soon you will be able to provide list of trackable items in input-folder. Graphical User Interface is also under consideration.
 
-For now, output only shows user ids. You can track down the actual user by highlightin user in MCF's User Administration. There will be possibility to se these up so application can translate id to user.
-
 ## Getting started
 
 After downloading/compiling, run the Executable. In the first run it will create you following folder and files:
 * C:\Users\\\<youruser>\My Documents\StockChangeTracker\
 * C:\Users\\\<youruser>\My Documents\StockChangeTracker\config\
 * C:\Users\\\<youruser>\My Documents\StockChangeTracker\config\credentials.ini
+* C:\Users\\\<youruser>\My Documents\StockChangeTracker\config\users.ini
 * C:\Users\\\<youruser>\My Documents\StockChangeTracker\input\
 * C:\Users\\\<youruser>\My Documents\StockChangeTracker\output\
 
@@ -43,6 +42,17 @@ Then navigate to My Documents -> StockChangeTracker -> config and open credentia
 `apikey` is key given to you when created API user. Frequent regeneration of apikey is encouraged for security reasons.
 
 Save the file. Application is ready to use.
+
+Optionally you can also define users. Find out user id from MCF User Administration page and on your computer navigate to My Documents -> StockChangeTracker -> config and open users.ini. Add lines in following format:
+`userid:user_in_human_readable_format`
+
+In example:
+
+`1:Boss`
+
+`2:The Warehouse Guy`
+
+`3:Mike`
 
 ## Usage
 
