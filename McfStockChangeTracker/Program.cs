@@ -75,7 +75,7 @@ namespace McfStockChangeTracker
                         continue;
                     }
                     Console.WriteLine($"Löydetty {data.Count} varastotapahtumaa tuotteelle {data.First().Product} annetulla aikavälillä.");
-                    var filename = $"{DateTime.Now:yyyyMMddhhmmss}-{givenLine}.csv";
+                    var filename = $"{DateTime.Now:yyyyMMddHHmmss}-{givenLine}.csv";
                     Console.WriteLine($"Kirjoitetaan tapahtumat tiedostoon {Path.Combine(io.OutputFolder, filename)}");
                     await io.WriteToCsv(filename, data);
                     Console.WriteLine("Kirjoitettu.");
