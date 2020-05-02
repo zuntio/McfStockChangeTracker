@@ -19,6 +19,8 @@ namespace McfStockChangeTracker
                 Console.WriteLine($"Tarvittavat kansiot, alikansiot ja asetustiedostot luotu hakemistoon {io.AppRootFolder}.");
                 Console.WriteLine($"Ennen seuraavaa ajoa, tallenna kaupan nimi, apikäyttäjätunnus ja apiavain tiedostoon {io.StoreConfigFile} muodossa:" +
                                   $"\n\nkaupannimi:sposti:apiavain123abc\n\n");
+                Console.WriteLine($"Halutessasi syötä käyttäjä-id:t ja niihin yhdistettävät nimet tiedostoon {io.UserConfigFile} muodossa:" +
+                                  $"\n\n1:Varasto\n2:Matti\n\n");
             }
             else
             {
@@ -31,8 +33,9 @@ namespace McfStockChangeTracker
 
         private static async Task GetStockChangesInteractively(FileIOService io)
         {
-            var settings = io.GetCredentials();
-            var service = new StockChangeTrackingService(settings);
+            var apiSettings = io.GetCredentials();
+            var userSettings = io.GetUsers();
+            var service = new StockChangeTrackingService(apiSettings, userSettings);
             Console.WriteLine("Tervetuloa StockBuster5000000:aan!\n\n");
             Console.WriteLine("Anna tuotteen tai tuotevariaation yksilöllinen tuotekoodi.");
             Console.WriteLine("Jos haluat hakea tietyn tuotteen kaikkien variaatioiden tapahtumat, anna päätuotteen tuotekoodi.");
