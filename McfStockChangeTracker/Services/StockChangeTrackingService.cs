@@ -14,10 +14,12 @@ namespace McfStockChangeTracker.Services
     public class StockChangeTrackingService
     {
         private readonly McfClient _client;
+        private readonly McfStockChangeTrackerUserOptions _userOptions;
 
-        public StockChangeTrackingService(StockBusterOptions options)
+        public StockChangeTrackingService(McfStockChangeTrackerApiOptions apiOptions, McfStockChangeTrackerUserOptions userOptions)
         {
-            _client = new McfClient(options.StoreName, options.ApiUser, options.ApiKey);
+            _client = new McfClient(apiOptions.StoreName, apiOptions.ApiUser, apiOptions.ApiKey);
+            _userOptions = userOptions;
         }
 
         public async Task<List<StockChangeDto>> SmartQueryForStockChanges(string productCode, DateTimeOffset? start,
@@ -125,7 +127,7 @@ namespace McfStockChangeTracker.Services
                 Variation = variationName,
                 StockChangeType = x.SourceType,
                 TimeStamp = x.ChangedAt.ToString("d.M.yyyy hh:mm:ss"),
-                User = x.UserId.ToString(),
+                User = _userOptions.Users.ContainsKey(x.UserId.ToString()) ? _userOptions.Users[x.UserId.ToString()] : x.UserId.ToString(),
                 Differential = x.QuantityChange,
                 TargetAmount = x.Quantity
             }).ToList();
