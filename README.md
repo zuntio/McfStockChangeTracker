@@ -25,11 +25,11 @@ For now, output only shows user ids. You can track down the actual user by highl
 ## Getting started
 
 After downloading/compiling, run the Executable. In the first run it will create you following folder and files:
-* C:\Users\<youruser>\My Documents\StockChangeTracker\
-* C:\Users\<youruser>\My Documents\StockChangeTracker\config\
-* C:\Users\<youruser>\My Documents\StockChangeTracker\config\credentials.ini
-* C:\Users\<youruser>\My Documents\StockChangeTracker\input\
-* C:\Users\<youruser>\My Documents\StockChangeTracker\output\
+* C:\Users\\\<youruser>\My Documents\StockChangeTracker\
+* C:\Users\\\<youruser>\My Documents\StockChangeTracker\config\
+* C:\Users\\\<youruser>\My Documents\StockChangeTracker\config\credentials.ini
+* C:\Users\\\<youruser>\My Documents\StockChangeTracker\input\
+* C:\Users\\\<youruser>\My Documents\StockChangeTracker\output\
 
 Close windows by pressing any key.
 
