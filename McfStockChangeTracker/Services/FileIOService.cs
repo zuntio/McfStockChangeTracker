@@ -15,7 +15,7 @@ namespace McfStockChangeTracker.Services
     public class FileIOService
     {
         private static readonly string _myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        private static readonly string _appRootFolder = Path.Combine(_myDocuments, "StockBuster");
+        private static readonly string _appRootFolder = Path.Combine(_myDocuments, "StockChangeTracker");
         private static readonly string _configFolder = Path.Combine(_appRootFolder, "config");
         private readonly string _inputFolder = Path.Combine(_appRootFolder, "input");
         private readonly string _outputFolder = Path.Combine(_appRootFolder, "output");
