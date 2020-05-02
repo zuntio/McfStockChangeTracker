@@ -1,6 +1,6 @@
 ﻿namespace McfStockChangeTracker.Options
 {
-    public class StockBusterOptions
+    public class McfStockChangeTrackerApiOptions
     {
         public string StoreName { get; set; }
         public string ApiUser { get; set; }
