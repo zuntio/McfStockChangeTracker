@@ -20,12 +20,14 @@ namespace McfStockChangeTracker.Services
         private readonly string _inputFolder = Path.Combine(_appRootFolder, "input");
         private readonly string _outputFolder = Path.Combine(_appRootFolder, "output");
         private readonly string _storeConfigFile = Path.Combine(_configFolder, "credentials.ini");
+        private readonly string _userConfigFile = Path.Combine(_configFolder, "users.ini");
 
         public bool WasInitialSetup { get; private set; }
 
         public string AppRootFolder => _appRootFolder;
         public string OutputFolder => _outputFolder;
         public string StoreConfigFile => _storeConfigFile;
+        public string UserConfigFile => _userConfigFile;
 
         public FileIOService()
         {
@@ -33,7 +35,7 @@ namespace McfStockChangeTracker.Services
             CheckAndCreateFoldersAndConfigurationFiles();
         }
 
-        public StockBusterOptions GetCredentials()
+        public McfStockChangeTrackerApiOptions GetCredentials()
         {
             var text = File.ReadAllLines(_storeConfigFile, Encoding.UTF8);
             var firstLine = text.FirstOrDefault();
@@ -42,12 +44,37 @@ namespace McfStockChangeTracker.Services
             var credentials = firstLine.Split(":");
             if (credentials.Length != 3)
                 throw new Exception($"Ohjelma tarvitsee kaikki kolme asiaa: Verkkokaupan nimen, käyttäjätunnuksen ja api-avaimen. Yksi tai useampi puuttuu. Tarkista {_storeConfigFile}");
-            return new StockBusterOptions
+            return new McfStockChangeTrackerApiOptions
             {
                 StoreName = credentials[0],
                 ApiUser = credentials[1],
                 ApiKey = credentials[2]
             };
+        }
+
+        public McfStockChangeTrackerUserOptions GetUsers()
+        {
+            var users = new Dictionary<string, string>();
+            var text = File.ReadAllLines(_userConfigFile, Encoding.UTF8);
+            var filteredLines = text.Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+            var splitLines = filteredLines.Select(x => x.Split(":")).Where(x => x.Length == 2).ToList();
+            splitLines.ForEach(x =>
+            {
+                try
+                {
+                    users.Add(x[0].Trim(), x[1].Trim());
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Sama käyttäjätunnus syötetty useaan kertaan. Tarkista {_userConfigFile}");
+                }
+            });
+
+            return new McfStockChangeTrackerUserOptions
+            {
+                Users = users
+            };
+
         }
 
         private void CheckAndCreateFoldersAndConfigurationFiles()
@@ -76,6 +103,11 @@ namespace McfStockChangeTracker.Services
             {
                 WasInitialSetup = true;
                 File.CreateText(_storeConfigFile);
+            }
+            if (!File.Exists(_userConfigFile))
+            {
+                WasInitialSetup = true;
+                File.CreateText(_userConfigFile);
             }
         }
 
