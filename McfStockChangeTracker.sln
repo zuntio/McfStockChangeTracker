@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McfStockChangeTracker", "McfStockChangeTracker\McfStockChangeTracker.csproj", "{A8D1C12D-444A-43F8-91DB-A3B77CDFE5E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C11DA8D1-974F-49AA-92EC-632F7D5C29A7} = {C11DA8D1-974F-49AA-92EC-632F7D5C29A7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCashFlow.Client", "MyCashFlow.Client\MyCashFlow.Client.csproj", "{C11DA8D1-974F-49AA-92EC-632F7D5C29A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8D1C12D-444A-43F8-91DB-A3B77CDFE5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8D1C12D-444A-43F8-91DB-A3B77CDFE5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8D1C12D-444A-43F8-91DB-A3B77CDFE5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8D1C12D-444A-43F8-91DB-A3B77CDFE5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C11DA8D1-974F-49AA-92EC-632F7D5C29A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C11DA8D1-974F-49AA-92EC-632F7D5C29A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C11DA8D1-974F-49AA-92EC-632F7D5C29A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C11DA8D1-974F-49AA-92EC-632F7D5C29A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34F36BB2-62B0-4F0B-9FFE-8641578A7486}
+	EndGlobalSection
+EndGlobal
